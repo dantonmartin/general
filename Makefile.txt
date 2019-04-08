@@ -1,0 +1,12 @@
+CC := gcc
+CFLAGS := -fPIC -O3 -g -Wall -Werror
+HFiles := CAENComm.h
+
+OwnMain: OwnMain.o OwnLibrary.o
+	$(CC) $(CFLAGS) OwnMain.o OwnLibrary.o -o OwnCode
+
+OwnMain.o: OwnMain.c OwnLibrary.so
+	$(CC) $(CFLAGS) -o OwnMain.c OwnLibrary.so
+	
+OwnLibrary.o: OwnLibrary.c $(HFiles)
+	$(CC) $(CFLAGS) OwnLibrary.c $(HFiles)

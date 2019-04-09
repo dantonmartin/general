@@ -1,5 +1,6 @@
 CC := gcc
 CFLAGS := -fPIC -O3 -g -Wall -Werror
+CFLAGS2 = -Wall -g -fPIC -shared
 HFiles := CAENComm.h
 
 OwnMain: OwnMain.o OwnLibrary.o
@@ -8,5 +9,5 @@ OwnMain: OwnMain.o OwnLibrary.o
 OwnMain.o: OwnMain.c OwnLibrary.so
 	$(CC) $(CFLAGS) -o OwnMain.c OwnLibrary.so
 	
-OwnLibrary.o: OwnLibrary.c $(HFiles)
-	$(CC) $(CFLAGS) OwnLibrary.c $(HFiles)
+OwnLibrary.so: OwnLibrary.c $(HFiles)
+	$(CC) -L $(CFLAGS2) $< -o $@ -lCAENComm

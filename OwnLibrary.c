@@ -17,17 +17,17 @@
 int handle;
 uint32_t Data;
 
-int OpenDevice(CAENComm_ConnectionType LinkType,
+CAENComm_ErrorCode OpenDevice(CAENComm_ConnectionType LinkType,
 			   int LinkNum,
 			   int ConetNode,
 		       uint32_t VMEBaseAddress,
 	           int *handle)
 {
-	 CAENComm_ErrorCode STDCALL CAENComm_OpenDevice(CAENComm_ConnectionType LinkType, 
-														   int LinkNum, 
-														   int ConetNode, 
-														   uint32_t VMEBaseAddress, 
-														   int *handle);
+	 return CAENComm_OpenDevice(LinkType, 
+							    LinkNum, 
+							    ConetNode, 
+							    VMEBaseAddress, 
+								handle);
 };
 
 void Write32(int handle,

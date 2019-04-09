@@ -16,11 +16,11 @@
 
 int main(){
 	
-	uint32_t Address = 0;
+	uint32_t Address = 5;
 	int handle;
-	uint32_t Data = 0;
+	uint32_t Data = 12;
 	
-	handle = OpenDevice (0, 0, 0, 0, &handle);
+	OpenDevice (0, 0, 0, 0, &handle);
 	
 	Write32 (handle, Address, Data);
 	
@@ -29,5 +29,8 @@ int main(){
 	CloseDevice (handle);
 	
 	printf("Device was closed.\n");
+	printf("Data: %d\n", Data);
+	printf("Address: %d\n", Address);
+	printf("Handle: %d\n", handle);
 	
 }
